@@ -3,6 +3,10 @@ import Form from './Form'
 import { loginConfig } from '../constants/FormConfig'
 
 class Login extends Component {
+  componentDidMount() {
+    this.props.setTitle('登陆')
+  }
+
   render() {
     return <Form config={loginConfig} />
   }

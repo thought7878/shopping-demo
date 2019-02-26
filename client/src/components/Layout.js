@@ -7,9 +7,11 @@ import { PINK_PRIMARY, PINK_ALT, TEXT_PRIMARY } from '../constants/colors'
 
 class Layout extends Component {
   render() {
+    const { title } = this.props
+
     return (
       <Wrap>
-        <Header>页面标题</Header>
+        <Header>{title}</Header>
         <Content>
           <Inner>
             <Switch>

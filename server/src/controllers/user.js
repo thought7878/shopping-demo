@@ -4,20 +4,24 @@ const User = require('../models/user')
 module.exports.signup = async (req, res) => {
   const { username, password, passwordConfirm } = req.body
   try {
-    if (password !== passwordConfirm) {
-      return res.json({ msg: '密码与确认密码不一致！' })
-    } else {
-      const user = await User.findOne({ username })
-      if (user) {
-        return res.status(403).json({ msg: '用户名重复，请重新注册！' })
+    if (username) {
+      if (password !== passwordConfirm) {
+        return res.json({ msg: '密码与确认密码不一致！' })
       } else {
-        const u = new User({
-          username,
-          password
-        })
-        const savedUser = await u.save()
-        res.json(savedUser)
+        const user = await User.findOne({ username })
+        if (user) {
+          return res.status(403).json({ msg: '用户名重复，请重新注册！' })
+        } else {
+          const u = new User({
+            username,
+            password
+          })
+          const savedUser = await u.save()
+          res.json(savedUser)
+        }
       }
+    } else {
+      return res.status(403).json({ msg: '用户名不能为空！' })
     }
   } catch (error) {
     res.status(500).json({ msg: '注册失败！请稍后重试！' })

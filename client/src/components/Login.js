@@ -8,7 +8,7 @@ class Login extends Component {
   }
 
   render() {
-    return <Form config={loginConfig} />
+    return <Form config={loginConfig} handleSubmit={this.props.login} />
   }
 }
 

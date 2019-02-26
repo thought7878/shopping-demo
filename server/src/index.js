@@ -15,6 +15,8 @@ db.on('connected', () => console.log(`Mongo connected`))
 // middleware
 const parser = require('body-parser')
 app.use(parser())
+const cors = require('cors')
+app.use(cors())
 
 const routes = require('./routes')
 routes(app)

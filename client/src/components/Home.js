@@ -7,6 +7,7 @@ import {
   WHITE
 } from '../constants/colors'
 import Logo from './Logo'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   render() {
@@ -20,8 +21,8 @@ class Home extends Component {
           </Text>
         </Hero>
         <Action>
-          <a>注册</a>
-          <a>登录</a>
+          <Link to="/signup">注册</Link>
+          <Link to="/login">登录</Link>
         </Action>
       </Wrap>
     )

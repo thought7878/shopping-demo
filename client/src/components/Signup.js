@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { signupConfig } from '../constants/FormConfig'
+import Form from './Form'
 
 class Signup extends Component {
   render() {
-    return <div>Signup</div>
+    return <Form config={signupConfig} />
   }
 }
 

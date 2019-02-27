@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Router } from 'react-router'
+import { Switch, Route } from 'react-router-dom'
+import { history } from '../utils/routerUtils'
 import HomeContainer from '../containers/HomeContainer'
 import LayoutContainer from '../containers/LayoutContainer'
 
@@ -7,7 +9,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Router>
+        <Router history={history}>
           <Switch>
             <Route exact path="/" component={HomeContainer} />
             <Route component={LayoutContainer} />

@@ -5,6 +5,7 @@ import SignupContainer from '../containers/SignupContainer'
 import LoginContainer from '../containers/LoginContainer'
 import { PINK_PRIMARY, PINK_ALT, TEXT_PRIMARY } from '../constants/colors'
 import AlertContainer from '../containers/AlertContainer'
+import SidebarContainer from '../containers/SidebarContainer'
 
 class Layout extends Component {
   render() {
@@ -12,6 +13,7 @@ class Layout extends Component {
 
     return (
       <Wrap>
+        <SidebarContainer />
         {this.props.isAlertShown && <AlertContainer />}
         <Header>{title}</Header>
         <Content>

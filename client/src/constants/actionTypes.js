@@ -1,3 +1,6 @@
 export const SET_TITLE = 'SET_TITLE'
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDE_ALERT = 'HIDE_ALERT'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'

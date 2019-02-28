@@ -19,7 +19,7 @@ class SideBar extends Component {
     return (
       <Wrap>
         <Menu customCrossIcon={false} isOpen={this.state.isOpen}>
-          <SidebarUserInfo />
+          <SidebarUserInfo {...this.props} />
           <div className="bm-link-list">
             <Link to="/">首页</Link>
             <Link to="/profile">个人中心</Link>

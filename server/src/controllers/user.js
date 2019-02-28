@@ -38,7 +38,7 @@ module.exports.login = async (req, res) => {
       if (password === u.password) {
         return res.json({ msg: '登陆成功！' })
       } else {
-        return res.json({ msg: '密码错误！' })
+        return res.status(403).json({ msg: '密码错误！' })
       }
     }
   } catch (error) {

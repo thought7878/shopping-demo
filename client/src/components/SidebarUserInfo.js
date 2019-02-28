@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import Avatar from './Avatar'
 import avatar from '../assets/avatar.png'
 
-const SidebarUserInfo = ({ isAuthenticated, logout }) => (
+const SidebarUserInfo = props => (
   <Wrap>
     <CenteredAvatar avatar={avatar} size="100" />
-    {isAuthenticated && (
+    {props.isAuthenticated && (
       <Text>
-        <Name to="/profile">用户名</Name>
-        <Link to="" onClick={logout}>
+        <Name to="/profile">{props.currentUser.username}</Name>
+        <Link to="" onClick={props.logout}>
           退出
         </Link>
       </Text>

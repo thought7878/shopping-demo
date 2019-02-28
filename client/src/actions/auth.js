@@ -9,7 +9,7 @@ export const signup = user => dispatch => {
     .post(SIGNUP_URL, user)
     .then(res => {
       console.log('res', res.data)
-      dispatch({ type: types.SIGNUP_SUCCESS })
+      dispatch({ type: types.SIGNUP_SUCCESS, user: res.data.user })
       history.push('/dashboard')
     })
     .catch(error => {
@@ -26,7 +26,7 @@ export const login = user => dispatch => {
     .post(LOGIN_URL, user)
     .then(res => {
       console.log('res', res.data)
-      dispatch({ type: types.LOGIN_SUCCESS })
+      dispatch({ type: types.LOGIN_SUCCESS, user: res.data.user })
       history.push('/dashboard')
     })
     .catch(error => {

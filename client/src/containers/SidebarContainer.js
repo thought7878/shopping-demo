@@ -7,7 +7,8 @@ import { logout } from '../actions/auth'
 const SidebarContainer = props => <Sidebar {...props} />
 
 const mapStateToProps = state => ({
-  isAuthenticated: getIsAuthenticated(state)
+  isAuthenticated: getIsAuthenticated(state),
+  currentUser: state.auth.currentUser
 })
 
 export default connect(

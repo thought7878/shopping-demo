@@ -10,6 +10,7 @@ export const signup = user => dispatch => {
     .then(res => {
       console.log('res', res.data)
       dispatch({ type: types.SIGNUP_SUCCESS, user: res.data.user })
+      window.localStorage.setItem('user', JSON.stringify(res.data.user))
       history.push('/dashboard')
     })
     .catch(error => {
@@ -27,6 +28,7 @@ export const login = user => dispatch => {
     .then(res => {
       console.log('res', res.data)
       dispatch({ type: types.LOGIN_SUCCESS, user: res.data.user })
+      window.localStorage.setItem('user', JSON.stringify(res.data.user))
       history.push('/dashboard')
     })
     .catch(error => {
@@ -40,7 +42,12 @@ export const login = user => dispatch => {
 
 export const logout = () => {
   history.push('/')
+  window.localStorage.removeItem('user')
   return dispatch => {
     dispatch({ type: types.LOGOUT_SUCCESS })
   }
+}
+// 刷新页面action逻辑
+export const refresh = user => dispatch => {
+  dispatch({ type: types.LOGIN_SUCCESS, user })
 }

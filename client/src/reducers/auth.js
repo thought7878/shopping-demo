@@ -25,4 +25,19 @@ const currentUser = (state = { _id: '', username: '' }, action) => {
   }
 }
 
-export default combineReducers({ isAuthenticated, currentUser })
+const isFetching = (state = false, action) => {
+  switch (action.type) {
+    case types.LOGIN_REQUEST:
+    case types.SIGNUP_REQUEST:
+      return true
+    case types.LOGIN_SUCCESS:
+    case types.LOGIN_FAILURE:
+    case types.SIGNUP_FAILURE:
+    case types.SIGNUP_SUCCESS:
+      return false
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ isAuthenticated, currentUser, isFetching })

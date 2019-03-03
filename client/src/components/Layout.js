@@ -6,21 +6,31 @@ import LoginContainer from '../containers/LoginContainer'
 import { PINK_PRIMARY, PINK_ALT, TEXT_PRIMARY } from '../constants/colors'
 import AlertContainer from '../containers/AlertContainer'
 import SidebarContainer from '../containers/SidebarContainer'
+import { PrivateRoute } from '../utils/routerUtils'
+import SettingsContainer from '../containers/SettingsContainer'
+import Spinner from 'react-spinner'
 
 class Layout extends Component {
   render() {
-    const { title } = this.props
+    const { title, isAuthenticated, isFetching } = this.props
 
     return (
       <Wrap>
         <SidebarContainer />
         {this.props.isAlertShown && <AlertContainer />}
         <Header>{title}</Header>
+        <FetchingWrap>{isFetching ? <Spinner /> : ''}</FetchingWrap>
+
         <Content>
           <Inner>
             <Switch>
               <Route path="/signup" component={SignupContainer} />
               <Route path="/login" component={LoginContainer} />
+              <PrivateRoute
+                path="/settings"
+                isAthenticated={isAuthenticated}
+                component={SettingsContainer}
+              />
             </Switch>
           </Inner>
         </Content>
@@ -30,6 +40,8 @@ class Layout extends Component {
 }
 
 export default Layout
+
+const FetchingWrap = styled.div``
 
 const Wrap = styled.div`
   height: 100vh;

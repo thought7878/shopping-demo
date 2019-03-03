@@ -17,7 +17,9 @@ module.exports.signup = async (req, res) => {
             password
           })
           const savedUser = await u.save()
-          res.json({ user: savedUser, msg: '注册成功！' })
+          setTimeout(() => {
+            res.json({ user: savedUser, msg: '注册成功！' })
+          }, 4000)
         }
       }
     } else {
@@ -36,7 +38,9 @@ module.exports.login = async (req, res) => {
     } else {
       const u = await User.findOne({ username })
       if (password === u.password) {
-        return res.json({ user: u, msg: '登陆成功！' })
+        setTimeout(() => {
+          return res.json({ user: u, msg: '登陆成功！' })
+        }, 4000)
       } else {
         return res.status(403).json({ msg: '密码错误！' })
       }

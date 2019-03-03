@@ -5,10 +5,10 @@ import { alert } from './index'
 import * as types from '../constants/actionTypes'
 
 export const signup = user => dispatch => {
+  dispatch({ type: types.SIGNUP_REQUEST })
   axios
     .post(SIGNUP_URL, user)
     .then(res => {
-      console.log('res', res.data)
       dispatch({ type: types.SIGNUP_SUCCESS, user: res.data.user })
       window.localStorage.setItem('user', JSON.stringify(res.data.user))
       history.push('/dashboard')
@@ -16,6 +16,7 @@ export const signup = user => dispatch => {
     .catch(error => {
       if (error.response) {
         const { msg } = error.response.data
+        dispatch({ type: types.SIGNUP_FAILURE })
         console.log('error', msg)
         dispatch(alert(msg))
       }
@@ -23,6 +24,7 @@ export const signup = user => dispatch => {
 }
 
 export const login = user => dispatch => {
+  dispatch({ type: types.LOGIN_REQUEST })
   axios
     .post(LOGIN_URL, user)
     .then(res => {
@@ -33,6 +35,7 @@ export const login = user => dispatch => {
     })
     .catch(error => {
       if (error.response) {
+        dispatch({ type: types.LOGIN_FAILURE })
         const { msg } = error.response.data
         console.log('error', msg)
         dispatch(alert(msg))
